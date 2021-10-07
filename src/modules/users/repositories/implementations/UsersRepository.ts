@@ -30,7 +30,7 @@ class UsersRepository implements IUsersRepository {
   }
 
   findById(id: string): User | undefined {
-    // Complete aqui
+    return this.users.find((user) => user.id === id);
   }
 
   findByEmail(email: string): User | undefined {
@@ -38,7 +38,15 @@ class UsersRepository implements IUsersRepository {
   }
 
   turnAdmin(receivedUser: User): User {
-    // Complete aqui
+    const adminUser = Object.assign(receivedUser, {
+      admin: true,
+      updated_at: new Date(),
+    });
+
+    const index = this.users.indexOf(receivedUser);
+    if (index !== -1) this.users[index] = adminUser;
+
+    return adminUser;
   }
 
   list(): User[] {
