@@ -1,5 +1,6 @@
 import { validate as validateId } from "uuid";
 
+import { CustomException } from "../../../../utils/CustomException";
 import { User } from "../../model/User";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 
@@ -13,13 +14,13 @@ class ListAllUsersUseCase {
   execute({ user_id }: IRequest): User[] {
     const isIdValid = validateId(user_id);
 
-    if (!isIdValid) throw new Error("User not found");
+    if (!isIdValid) throw new CustomException(404, "User not found");
 
     const user = this.usersRepository.findById(user_id);
 
-    if (!user) throw new Error("User not found");
+    if (!user) throw new CustomException(400, "User not found");
 
-    if (!user.admin) throw new Error("Admin permission needed");
+    if (!user.admin) throw new CustomException(400, "Admin permission needed");
 
     return this.usersRepository.list();
   }

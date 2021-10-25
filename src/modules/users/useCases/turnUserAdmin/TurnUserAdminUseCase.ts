@@ -1,3 +1,4 @@
+import { CustomException } from "../../../../utils/CustomException";
 import { User } from "../../model/User";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 
@@ -11,7 +12,7 @@ class TurnUserAdminUseCase {
   execute({ user_id }: IRequest): User {
     const user = this.usersRepository.findById(user_id);
 
-    if (!user) throw new Error("User not found");
+    if (!user) throw new CustomException(404, "User not found");
 
     const updatedUser = this.usersRepository.turnAdmin(user);
 

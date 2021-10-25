@@ -1,3 +1,4 @@
+import { CustomException } from "../../../../utils/CustomException";
 import { User } from "../../model/User";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 
@@ -10,11 +11,10 @@ class CreateUserUseCase {
   constructor(private usersRepository: IUsersRepository) {}
 
   execute({ email, name }: IRequest): User {
-    // Complete aqui
     const userAlreadyExists = this.usersRepository.findByEmail(email);
 
     if (userAlreadyExists) {
-      throw new Error(`User with email ${email} already exists`);
+      throw new CustomException(400, `User with email ${email} already exists`);
     }
 
     return this.usersRepository.create({ name, email });
