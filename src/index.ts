@@ -1,4 +1,5 @@
 import express from "express";
+import "express-async-errors";
 
 import { usersRoutes } from "./routes/users.routes";
 import { handleErrorMidleware } from "./utils/CustomException";

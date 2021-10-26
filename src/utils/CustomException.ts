@@ -16,8 +16,6 @@ class CustomException extends Error {
     this.statusCode = statusCode;
     this.message = message;
   }
-
-  // https://dev.to/nedsoft/central-error-handling-in-express-3aej
 }
 
 const handleErrorMidleware = (error, response: Response): Response => {
@@ -27,6 +25,7 @@ const handleErrorMidleware = (error, response: Response): Response => {
     status: "error",
     statusCode,
     message,
+    error: error.message,
   });
 };
 
