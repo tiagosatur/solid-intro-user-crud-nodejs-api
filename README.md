@@ -12,3 +12,7 @@ This a user CRUD api built for nodejs study purposes
 
 The api will be available under the route `http://localhost:3333`
 
+## :checkered_flag: Test
+
+`yarn test`
+
