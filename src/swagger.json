@@ -1,0 +1,80 @@
+{
+ "openapi": "3.0.0",
+ "info": {
+  "title": "Solid intro user crud node js api",
+  "version": "1.0.0"
+ },
+  "paths": {
+   "/users": {
+    "post": {
+     "description": "Create a user",
+     "tags": ["Users"],
+     "requestBody": {
+      "required": true,
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "properties": {
+          "name": {
+           "type": "string"
+          },
+          "email": {
+           "type": "string"
+          }
+         },
+         "example": {
+          "name": "Ziggy",
+          "descritpion": "ziggy123@gmail.com"
+         }
+        }
+       }
+      }
+     },
+     "responses": {
+      "201": {
+       "description": "User register created and returned",
+       "content": {
+        "application/json": {
+         "schema": {
+          "type": "object",
+          "properties": {
+           "id": {
+            "type": "string",
+            "example": "f064165d-d2fe-48a8-ac64-74e55c7a9fdf"
+           },
+           "admin": {
+            "type": "boolean",
+            "example": "false"
+           },
+           "created_at": {
+            "type": "string",
+            "example": "2021-10-27T13:11:24.338Z"
+           },
+           "updated_at": {
+            "type": "string",
+            "example": "2021-10-27T13:11:24.338Z"
+           },
+           "name": {
+            "type": "string",
+            "example":"Ziggy"
+           },
+           "email": {
+            "type": "string",
+            "example": "ziggy123@gmail.com"
+            
+           }
+          }
+         }
+        }
+       }
+      },
+      "400": {
+       "description": "User with email ${email} already exists"
+      }
+     }
+    }
+   }
+  }
+ 
+}
