@@ -16,3 +16,5 @@ The api will be available under the route `http://localhost:3333`
 
 `yarn test`
 
+## Requirements
+Link to [Desafio 01 - Introdução ao solid](https://www.notion.so/Desafio-01-Introdu-o-ao-SOLID-3b9be286fac0482ca3b275473ddd2d72)
